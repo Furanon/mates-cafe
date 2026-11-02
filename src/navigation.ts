@@ -80,13 +80,15 @@ export const menus = {
           {
             icon: 'users',
             title: 'Volunteer Program',
-            description: 'Students learn barista skills in exchange for their time',
+            description:
+              'Students learn barista skills in exchange for their time',
             href: '/about#volunteer',
           },
           {
             icon: 'palette',
             title: 'Art Space',
-            description: 'Open twice a month for local artists and craftspeople',
+            description:
+              'Open twice a month for local artists and craftspeople',
             href: '/about#art-space',
           },
         ],
@@ -136,7 +138,8 @@ export const menus = {
           {
             href: '/community#volunteer',
             title: 'Student Volunteers',
-            description: 'Learn barista skills while giving back to the community',
+            description:
+              'Learn barista skills while giving back to the community',
             image: groupshot,
           },
           {
