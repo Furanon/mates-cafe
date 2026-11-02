@@ -6,13 +6,13 @@ The site is designed around three things: great coffee, a student volunteer prog
 
 ## Pages
 
-| Route        | What it is                                                              |
-| ------------ | ----------------------------------------------------------------------- |
-| `/`          | Splash hero, signature matcha, volunteer programme and art space        |
-| `/menu`      | Matcha, coffee and food menus with prices                               |
-| `/community` | The volunteer programme and the bi-monthly art space                    |
-| `/about`     | The MATES story, mission, programmes and values                         |
-| `/contact`   | Address, opening hours, contact form and directions                     |
+| Route        | What it is                                                       |
+| ------------ | ---------------------------------------------------------------- |
+| `/`          | Splash hero, signature matcha, volunteer programme and art space |
+| `/menu`      | Matcha, coffee and food menus with prices                        |
+| `/community` | The volunteer programme and the bi-monthly art space             |
+| `/about`     | The MATES story, mission, programmes and values                  |
+| `/contact`   | Address, opening hours, contact form and directions              |
 
 ## Getting started
 

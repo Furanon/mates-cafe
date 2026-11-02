@@ -67,7 +67,8 @@ const schema: WithContext<Thing> = {
         Visit Us
       </h1>
       <p class="mt-5 text-lg text-pretty text-slate-600">
-        Come by for a coffee, send us a message, or follow our journey on Instagram. There is always a seat at the long table.
+        Come by for a coffee, send us a message, or follow our journey on
+        Instagram. There is always a seat at the long table.
       </p>
     </div>
 
@@ -81,7 +82,8 @@ const schema: WithContext<Thing> = {
           <div>
             <h2 class="font-semibold text-slate-800">{addressHeading}</h2>
             <address class="mt-1 text-sm text-slate-500 not-italic">
-              {contactDetails.addressLine1}<br />
+              {contactDetails.addressLine1}
+              <br />
               {contactDetails.addressLine2}
             </address>
           </div>
@@ -156,7 +158,8 @@ const schema: WithContext<Thing> = {
       <div class="rounded-3xl bg-matcha-50 p-6 ring-1 ring-matcha-100 sm:p-8">
         <h2 class="text-2xl font-semibold text-slate-800">Send us a message</h2>
         <p class="mt-1 text-sm text-slate-600">
-          Questions, ideas, or just want to say hello? We usually reply within a day.
+          Questions, ideas, or just want to say hello? We usually reply within a
+          day.
         </p>
         <div class="mt-6">
           <JsonForm form={contactForm} />
@@ -182,7 +185,8 @@ const schema: WithContext<Thing> = {
           Find us in Tanjong Malim
         </h2>
         <p class="mt-2 max-w-md text-pretty text-white/80">
-          {contactDetails.addressLine1}, {contactDetails.addressLine2} — in the heart of town, a short walk from the main street.
+          {contactDetails.addressLine1}, {contactDetails.addressLine2} — in the
+          heart of town, a short walk from the main street.
         </p>
         <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
           <a
