@@ -5,7 +5,10 @@ import groupshot from '@images/groupshot.png';
 ---
 
 {/* Splash hero: establishes the coffee vibe on first impression */}
-<section class="relative isolate overflow-hidden bg-slate-900">
+<section
+  class="relative isolate overflow-hidden bg-slate-900"
+  data-parallax-hero
+>
   <Image
     src={splash}
     alt="The MATES coffee bar in Tanjong Malim, with espresso grinder and paper lanterns"
@@ -13,7 +16,8 @@ import groupshot from '@images/groupshot.png';
     height={1280}
     loading="eager"
     fetchpriority="high"
-    class="absolute inset-0 h-full w-full object-cover object-center"
+    class="absolute inset-x-0 -top-[12.5%] h-[125%] w-full transform-gpu object-cover object-center will-change-transform"
+    data-hero-media
   />
   {/* Warm dark wash so the white type stays readable over the photo */}
   <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/55 to-slate-950/85"></div>
@@ -27,7 +31,9 @@ import groupshot from '@images/groupshot.png';
         Coffee, community, and a seat for everyone.
       </h1>
       <p class="mt-6 max-w-2xl text-lg text-pretty text-white/85 sm:text-xl">
-        MATES is a neighbourhood cafe where students learn barista skills through our volunteer programme, local artists share their work twice a month, and every cup starts with a conversation.
+        MATES is a neighbourhood cafe where students learn barista skills
+        through our volunteer programme, local artists share their work twice a
+        month, and every cup starts with a conversation.
       </p>
       <div class="mt-10 flex flex-wrap items-center gap-4">
         <a
@@ -64,7 +70,10 @@ import groupshot from '@images/groupshot.png';
 
 {/* The group shot deserves a big, proud placement right below the splash */}
 <section class="relative z-10 mx-auto max-w-[72rem] px-4 sm:px-6 lg:px-8">
-  <figure class="-mt-36 overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/10 sm:-mt-40">
+  <figure
+    class="-mt-16 transform-gpu overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/10 will-change-transform sm:-mt-20"
+    data-group-shot
+  >
     <Image
       src={groupshot}
       alt="The MATES crew and student volunteers smiling behind the cafe counter"
@@ -74,7 +83,9 @@ import groupshot from '@images/groupshot.png';
       class="aspect-[16/9] w-full object-cover"
     />
     <figcaption class="flex flex-col gap-2 bg-white px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
-      <p class="font-medium text-slate-800">The MATES crew — baristas, students, and friends.</p>
+      <p class="font-medium text-slate-800">
+        The MATES crew — baristas, students, and friends.
+      </p>
       <a
         href="/community"
         class="text-sm font-semibold text-matcha-700 transition-colors hover:text-matcha-800"
@@ -84,3 +95,90 @@ import groupshot from '@images/groupshot.png';
     </figcaption>
   </figure>
 </section>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    // Re-running this inline script after an Astro page swap should not add
+    // duplicate scroll listeners, so keep one shared initializer on window.
+    if (window.__matesHeroParallax) {
+      window.__matesHeroParallax();
+      return;
+    }
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let cleanup = null;
+
+    const init = () => {
+      cleanup?.();
+
+      const hero = document.querySelector('[data-parallax-hero]');
+      const media = document.querySelector('[data-hero-media]');
+      const group = document.querySelector('[data-group-shot]');
+
+      if (!hero || !media || !group) return;
+
+      if (reducedMotion.matches) {
+        media.style.transform = '';
+        group.style.transform = '';
+        return;
+      }
+
+      let heroHeight = 0;
+      let maxParallax = 0;
+      let maxLift = 0;
+      let frame = 0;
+
+      const measure = () => {
+        heroHeight = hero.offsetHeight;
+        maxParallax = heroHeight * 0.12;
+        maxLift = Math.min(64, heroHeight * 0.09);
+      };
+
+      const update = () => {
+        frame = 0;
+        if (!heroHeight) return;
+
+        const progress = Math.min(
+          Math.max(-hero.getBoundingClientRect().top / (heroHeight * 0.85), 0),
+          1
+        );
+
+        media.style.transform = `translate3d(0, ${(progress * maxParallax).toFixed(2)}px, 0)`;
+        group.style.transform = `translate3d(0, ${(-progress * maxLift).toFixed(2)}px, 0)`;
+      };
+
+      const requestUpdate = () => {
+        if (frame) return;
+        frame = window.requestAnimationFrame(update);
+      };
+
+      const resizeObserver = new ResizeObserver(() => {
+        measure();
+        requestUpdate();
+      });
+      resizeObserver.observe(hero);
+
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      window.addEventListener('resize', requestUpdate);
+
+      measure();
+      update();
+
+      cleanup = () => {
+        window.cancelAnimationFrame(frame);
+        frame = 0;
+        window.removeEventListener('scroll', requestUpdate);
+        window.removeEventListener('resize', requestUpdate);
+        resizeObserver.disconnect();
+        media.style.transform = '';
+        group.style.transform = '';
+        cleanup = null;
+      };
+    };
+
+    window.__matesHeroParallax = init;
+    document.addEventListener('astro:page-load', init);
+    document.addEventListener('astro:before-swap', () => cleanup && cleanup());
+    init();
+  })();
+</script>
