@@ -74,14 +74,22 @@ const quickLinks = [
         <h3 class="font-semibold text-slate-700">Visit Us</h3>
         <address class="mt-4 space-y-1 text-sm text-slate-600 not-italic">
           <p>{site.address.street}</p>
-          <p>{site.address.city}, {site.address.country}</p>
+          <p>
+            {site.address.city}, {site.address.country}
+          </p>
           <p class="pt-2">
-            <a href={`tel:${site.phone}`} class="transition-colors hover:text-matcha-700">
+            <a
+              href={`tel:${site.phone}`}
+              class="transition-colors hover:text-matcha-700"
+            >
               {site.phone}
             </a>
           </p>
           <p>
-            <a href={`mailto:${site.email}`} class="transition-colors hover:text-matcha-700">
+            <a
+              href={`mailto:${site.email}`}
+              class="transition-colors hover:text-matcha-700"
+            >
               {site.email}
             </a>
           </p>

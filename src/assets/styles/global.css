@@ -46,14 +46,14 @@
   /* MATES Blue - sampled from the logo (#406aff) */
   --color-mates-blue-50: oklch(97% 0.02 267);
   --color-mates-blue-100: oklch(93% 0.05 267);
-  --color-mates-blue-200: oklch(85% 0.10 267);
+  --color-mates-blue-200: oklch(85% 0.1 267);
   --color-mates-blue-300: oklch(75% 0.16 267);
-  --color-mates-blue-400: oklch(66% 0.20 267);
+  --color-mates-blue-400: oklch(66% 0.2 267);
   --color-mates-blue-500: oklch(58.5% 0.226 267);
-  --color-mates-blue-600: oklch(50% 0.20 267);
+  --color-mates-blue-600: oklch(50% 0.2 267);
   --color-mates-blue-700: oklch(42% 0.17 267);
   --color-mates-blue-800: oklch(34% 0.135 267);
-  --color-mates-blue-900: oklch(27% 0.10 267);
+  --color-mates-blue-900: oklch(27% 0.1 267);
   --color-mates-blue-950: oklch(18% 0.065 267);
 
   /* Teal is aliased to matcha so older components stay on-brand. */
