@@ -39,11 +39,31 @@ const menuSections = [
     image: matchaLatte,
     imageAlt: 'A MATES matcha latte being finished with a dusting of matcha',
     items: [
-      { name: 'Classic Matcha Latte', description: 'Ceremonial-grade matcha with steamed milk', price: 'RM 14' },
-      { name: 'Iced Matcha Latte', description: 'Our classic matcha, served over ice', price: 'RM 14' },
-      { name: 'Matcha Espresso Fusion', description: 'A bold shot of espresso meets earthy matcha', price: 'RM 16' },
-      { name: 'Strawberry Matcha', description: 'Sweet strawberry puree layered with matcha and milk', price: 'RM 17' },
-      { name: 'Matcha Affogato', description: 'Vanilla ice cream drowned in a shot of hot matcha', price: 'RM 16' },
+      {
+        name: 'Classic Matcha Latte',
+        description: 'Ceremonial-grade matcha with steamed milk',
+        price: 'RM 14',
+      },
+      {
+        name: 'Iced Matcha Latte',
+        description: 'Our classic matcha, served over ice',
+        price: 'RM 14',
+      },
+      {
+        name: 'Matcha Espresso Fusion',
+        description: 'A bold shot of espresso meets earthy matcha',
+        price: 'RM 16',
+      },
+      {
+        name: 'Strawberry Matcha',
+        description: 'Sweet strawberry puree layered with matcha and milk',
+        price: 'RM 17',
+      },
+      {
+        name: 'Matcha Affogato',
+        description: 'Vanilla ice cream drowned in a shot of hot matcha',
+        price: 'RM 16',
+      },
     ],
   },
   {
@@ -53,13 +73,41 @@ const menuSections = [
     image: splash,
     imageAlt: 'The MATES coffee bar and espresso grinder',
     items: [
-      { name: 'Espresso', description: 'Double shot of our house blend', price: 'RM 9' },
-      { name: 'Americano', description: 'Espresso with hot or cold water', price: 'RM 11' },
-      { name: 'Cappuccino', description: 'Espresso, steamed milk, and a thick layer of foam', price: 'RM 13' },
-      { name: 'Flat White', description: 'Smooth espresso with velvety microfoam', price: 'RM 13' },
-      { name: 'Cafe Latte', description: 'Espresso with plenty of steamed milk', price: 'RM 13' },
-      { name: 'Mocha', description: 'Espresso, chocolate, and steamed milk', price: 'RM 15' },
-      { name: 'Cold Brew', description: 'Slow-steeped for 18 hours, smooth and refreshing', price: 'RM 14' },
+      {
+        name: 'Espresso',
+        description: 'Double shot of our house blend',
+        price: 'RM 9',
+      },
+      {
+        name: 'Americano',
+        description: 'Espresso with hot or cold water',
+        price: 'RM 11',
+      },
+      {
+        name: 'Cappuccino',
+        description: 'Espresso, steamed milk, and a thick layer of foam',
+        price: 'RM 13',
+      },
+      {
+        name: 'Flat White',
+        description: 'Smooth espresso with velvety microfoam',
+        price: 'RM 13',
+      },
+      {
+        name: 'Cafe Latte',
+        description: 'Espresso with plenty of steamed milk',
+        price: 'RM 13',
+      },
+      {
+        name: 'Mocha',
+        description: 'Espresso, chocolate, and steamed milk',
+        price: 'RM 15',
+      },
+      {
+        name: 'Cold Brew',
+        description: 'Slow-steeped for 18 hours, smooth and refreshing',
+        price: 'RM 14',
+      },
     ],
   },
   {
@@ -69,12 +117,36 @@ const menuSections = [
     image: whitePasta,
     imageAlt: 'A plate of creamy pasta at MATES Cafe',
     items: [
-      { name: 'Butter Croissant', description: 'Flaky, golden, baked fresh daily', price: 'RM 8' },
-      { name: 'Pain au Chocolat', description: 'Buttery pastry filled with dark chocolate', price: 'RM 9' },
-      { name: 'Banana Bread', description: 'Moist and warmly spiced, served toasted', price: 'RM 8' },
-      { name: 'Creamy Bacon Pasta', description: 'Silky white sauce, crispy bacon, and fresh basil', price: 'RM 18' },
-      { name: 'Chicken Rice Set', description: 'Grilled chicken, greens, soup, and a side of sambal', price: 'RM 20' },
-      { name: 'Laksa of the Day', description: 'Ask our team about today’s bowl', price: 'RM 16' },
+      {
+        name: 'Butter Croissant',
+        description: 'Flaky, golden, baked fresh daily',
+        price: 'RM 8',
+      },
+      {
+        name: 'Pain au Chocolat',
+        description: 'Buttery pastry filled with dark chocolate',
+        price: 'RM 9',
+      },
+      {
+        name: 'Banana Bread',
+        description: 'Moist and warmly spiced, served toasted',
+        price: 'RM 8',
+      },
+      {
+        name: 'Creamy Bacon Pasta',
+        description: 'Silky white sauce, crispy bacon, and fresh basil',
+        price: 'RM 18',
+      },
+      {
+        name: 'Chicken Rice Set',
+        description: 'Grilled chicken, greens, soup, and a side of sambal',
+        price: 'RM 20',
+      },
+      {
+        name: 'Laksa of the Day',
+        description: 'Ask our team about today’s bowl',
+        price: 'RM 16',
+      },
     ],
   },
 ];
@@ -88,9 +160,13 @@ const menuSections = [
         Our Menu
       </h1>
       <p class="mt-6 text-lg text-pretty text-slate-600">
-        From signature matcha drinks to expertly pulled espresso and fresh local food – every item is prepared with care by our team of student baristas.
+        From signature matcha drinks to expertly pulled espresso and fresh local
+        food – every item is prepared with care by our team of student baristas.
       </p>
-      <nav class="mt-8 flex flex-wrap justify-center gap-2" aria-label="Menu sections">
+      <nav
+        class="mt-8 flex flex-wrap justify-center gap-2"
+        aria-label="Menu sections"
+      >
         {menuSections.map(section => (
           <a
             href={`#${section.id}`}
@@ -105,29 +181,38 @@ const menuSections = [
 
   {/* Menu Sections */}
   {menuSections.map((section, index) => (
-    <section
-      id={section.id}
-      class={index % 2 === 1 ? 'bg-matcha-50/40' : ''}
-    >
+    <section id={section.id} class={index % 2 === 1 ? 'bg-matcha-50/40' : ''}>
       <div class="mx-auto max-w-[85rem] px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-5xl">
-          <div class={`grid gap-12 lg:grid-cols-2 items-center ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
+          <div
+            class={`grid gap-12 lg:grid-cols-2 items-center ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}
+          >
             <div class={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-              <p class="text-sm font-semibold uppercase tracking-widest text-matcha-600">{section.subtitle}</p>
-              <h2 class="mt-2 text-3xl font-semibold text-slate-800 md:text-4xl">{section.title}</h2>
+              <p class="text-sm font-semibold uppercase tracking-widest text-matcha-600">
+                {section.subtitle}
+              </p>
+              <h2 class="mt-2 text-3xl font-semibold text-slate-800 md:text-4xl">
+                {section.title}
+              </h2>
               <dl class="mt-8 divide-y divide-dashed divide-slate-200">
                 {section.items.map(item => (
                   <div class="flex items-baseline justify-between gap-4 py-4">
                     <div>
                       <dt class="font-medium text-slate-800">{item.name}</dt>
-                      <dd class="mt-0.5 text-sm text-slate-500">{item.description}</dd>
+                      <dd class="mt-0.5 text-sm text-slate-500">
+                        {item.description}
+                      </dd>
                     </div>
-                    <span class="shrink-0 font-semibold text-matcha-700">{item.price}</span>
+                    <span class="shrink-0 font-semibold text-matcha-700">
+                      {item.price}
+                    </span>
                   </div>
                 ))}
               </dl>
             </div>
-            <div class={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
+            <div
+              class={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}
+            >
               <Image
                 src={section.image}
                 alt={section.imageAlt}
@@ -145,21 +230,41 @@ const menuSections = [
   {/* From the kitchen strip */}
   <section class="mx-auto max-w-[85rem] px-4 pt-4 pb-16 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-5xl">
-      <h2 class="text-center text-2xl font-semibold text-slate-800">From the kitchen</h2>
-      <p class="mt-2 text-center text-slate-600">A rotating line-up of local favourites, made fresh every day.</p>
+      <h2 class="text-center text-2xl font-semibold text-slate-800">
+        From the kitchen
+      </h2>
+      <p class="mt-2 text-center text-slate-600">
+        A rotating line-up of local favourites, made fresh every day.
+      </p>
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
         <figure class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-900/5">
-          <Image src={chicken} alt="Chicken rice set with soup and sambal at MATES Cafe" width={800} height={600} class="aspect-[4/3] w-full object-cover" />
+          <Image
+            src={chicken}
+            alt="Chicken rice set with soup and sambal at MATES Cafe"
+            width={800}
+            height={600}
+            class="aspect-[4/3] w-full object-cover"
+          />
           <figcaption class="px-5 py-4">
             <p class="font-medium text-slate-800">Chicken Rice Set</p>
-            <p class="text-sm text-slate-600">Grilled chicken, greens, clear soup, and sambal.</p>
+            <p class="text-sm text-slate-600">
+              Grilled chicken, greens, clear soup, and sambal.
+            </p>
           </figcaption>
         </figure>
         <figure class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-900/5">
-          <Image src={food} alt="Laksa bowl with sambal at MATES Cafe" width={800} height={600} class="aspect-[4/3] w-full object-cover" />
+          <Image
+            src={food}
+            alt="Laksa bowl with sambal at MATES Cafe"
+            width={800}
+            height={600}
+            class="aspect-[4/3] w-full object-cover"
+          />
           <figcaption class="px-5 py-4">
             <p class="font-medium text-slate-800">Laksa of the Day</p>
-            <p class="text-sm text-slate-600">Ask the team what’s simmering in the kitchen.</p>
+            <p class="text-sm text-slate-600">
+              Ask the team what’s simmering in the kitchen.
+            </p>
           </figcaption>
         </figure>
       </div>
@@ -170,7 +275,8 @@ const menuSections = [
   <section class="mx-auto max-w-[85rem] px-4 pb-16 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-2xl rounded-2xl bg-mates-blue-50 p-8 text-center">
       <p class="text-slate-600">
-        Prices are in Malaysian Ringgit (RM) and subject to change. Ask our team about daily specials, seasonal drinks, and vegan options.
+        Prices are in Malaysian Ringgit (RM) and subject to change. Ask our team
+        about daily specials, seasonal drinks, and vegan options.
       </p>
     </div>
   </section>

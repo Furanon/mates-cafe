@@ -1,12 +1,7 @@
 import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { Icons } from '@ui/icons/icons';
-import {
-  aboutTrail,
-  menuItems,
-  menuList,
-  navigationLinks,
-} from './navigation';
+import { aboutTrail, menuItems, menuList, navigationLinks } from './navigation';
 
 /** Astro file routing: `/a/b` is served by `a/b.astro` or `a/b/index.astro`. */
 function pageExists(href: string): boolean {
