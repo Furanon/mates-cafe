@@ -71,7 +71,7 @@ import groupshot from '@images/groupshot.png';
 {/* The group shot deserves a big, proud placement right below the splash */}
 <section class="relative z-10 mx-auto max-w-[72rem] px-4 sm:px-6 lg:px-8">
   <figure
-    class="-mt-16 transform-gpu overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/10 will-change-transform sm:-mt-20"
+    class="transform-gpu overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/10 will-change-transform"
     data-group-shot
   >
     <Image
@@ -131,7 +131,7 @@ import groupshot from '@images/groupshot.png';
       const measure = () => {
         heroHeight = hero.offsetHeight;
         maxParallax = heroHeight * 0.12;
-        maxLift = Math.min(64, heroHeight * 0.09);
+        maxLift = Math.min(144, heroHeight * 0.14);
       };
 
       const update = () => {
