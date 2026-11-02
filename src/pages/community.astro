@@ -41,7 +41,8 @@ const schema: WithContext<Thing> = {
         More Than a Cafe
       </h1>
       <p class="mt-6 text-lg text-pretty text-slate-600">
-        MATES is built on community. Two programs sit at the heart of everything we do – our student volunteer program and our bi-monthly art space.
+        MATES is built on community. Two programs sit at the heart of everything
+        we do – our student volunteer program and our bi-monthly art space.
       </p>
     </div>
   </section>
@@ -65,16 +66,28 @@ const schema: WithContext<Thing> = {
   </section>
 
   {/* Volunteer Program */}
-  <section id="volunteer" class="mx-auto max-w-[85rem] px-4 py-16 sm:px-6 lg:px-8">
+  <section
+    id="volunteer"
+    class="mx-auto max-w-[85rem] px-4 py-16 sm:px-6 lg:px-8"
+  >
     <div class="mx-auto max-w-5xl grid gap-12 lg:grid-cols-2 items-center">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-widest text-matcha-600">For Students</p>
-        <h2 class="mt-2 text-3xl font-semibold text-slate-800 md:text-4xl">Volunteer & Learn to Be a Barista</h2>
+        <p class="text-sm font-semibold uppercase tracking-widest text-matcha-600">
+          For Students
+        </p>
+        <h2 class="mt-2 text-3xl font-semibold text-slate-800 md:text-4xl">
+          Volunteer & Learn to Be a Barista
+        </h2>
         <p class="mt-6 text-lg text-pretty text-slate-600">
-          We believe the best way to learn is by doing. Our volunteer program invites students from Tanjong Malim and beyond to spend time behind the bar, learning real barista skills from our team.
+          We believe the best way to learn is by doing. Our volunteer program
+          invites students from Tanjong Malim and beyond to spend time behind
+          the bar, learning real barista skills from our team.
         </p>
         <p class="mt-4 text-lg text-pretty text-slate-600">
-          In exchange for your time, you'll learn how to dial in espresso, steam milk to the perfect texture, pour latte art, and serve customers with confidence. No experience necessary – just curiosity and a willingness to learn.
+          In exchange for your time, you'll learn how to dial in espresso, steam
+          milk to the perfect texture, pour latte art, and serve customers with
+          confidence. No experience necessary – just curiosity and a willingness
+          to learn.
         </p>
         <ul class="mt-8 space-y-4">
           {[
@@ -85,7 +98,9 @@ const schema: WithContext<Thing> = {
             'A supportive team that has your back',
           ].map(item => (
             <li class="flex items-start gap-3">
-              <span class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-matcha-100 text-matcha-700 text-xs">✓</span>
+              <span class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-matcha-100 text-matcha-700 text-xs">
+                ✓
+              </span>
               <span class="text-slate-600">{item}</span>
             </li>
           ))}
@@ -116,37 +131,70 @@ const schema: WithContext<Thing> = {
     <div class="mx-auto max-w-[85rem] px-4 py-16 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-5xl">
         <div class="mx-auto max-w-2xl text-center">
-          <p class="text-sm font-semibold uppercase tracking-widest text-mates-blue-600">For Artists & Makers</p>
-          <h2 class="mt-2 text-3xl font-semibold text-slate-800 md:text-4xl">The MATES Art Space</h2>
+          <p class="text-sm font-semibold uppercase tracking-widest text-mates-blue-600">
+            For Artists & Makers
+          </p>
+          <h2 class="mt-2 text-3xl font-semibold text-slate-800 md:text-4xl">
+            The MATES Art Space
+          </h2>
           <p class="mt-6 text-lg text-pretty text-slate-600">
-            Twice a month, our cafe becomes a gallery and marketplace. Local artists, illustrators, ceramicists, jewellers, and craftspeople are invited to display and sell their work – free of charge.
+            Twice a month, our cafe becomes a gallery and marketplace. Local
+            artists, illustrators, ceramicists, jewellers, and craftspeople are
+            invited to display and sell their work – free of charge.
           </p>
         </div>
 
         <div class="mt-12 grid gap-6 sm:grid-cols-3">
           <div class="overflow-hidden rounded-2xl">
-            <Image src={table2} alt="Art displayed at MATES Cafe" width={600} height={450} class="h-56 w-full object-cover" />
+            <Image
+              src={table2}
+              alt="Art displayed at MATES Cafe"
+              width={600}
+              height={450}
+              class="h-56 w-full object-cover"
+            />
           </div>
           <div class="overflow-hidden rounded-2xl">
-            <Image src={table3} alt="Art space setup at MATES Cafe" width={600} height={450} class="h-56 w-full object-cover" />
+            <Image
+              src={table3}
+              alt="Art space setup at MATES Cafe"
+              width={600}
+              height={450}
+              class="h-56 w-full object-cover"
+            />
           </div>
           <div class="overflow-hidden rounded-2xl">
-            <Image src={table1} alt="The MATES communal table beneath posters and artwork" width={600} height={450} class="h-56 w-full object-cover" />
+            <Image
+              src={table1}
+              alt="The MATES communal table beneath posters and artwork"
+              width={600}
+              height={450}
+              class="h-56 w-full object-cover"
+            />
           </div>
         </div>
 
         <div class="mt-12 grid gap-8 sm:grid-cols-3">
           <div class="rounded-2xl bg-white p-6 shadow-sm">
             <h3 class="font-semibold text-slate-800">No Fees, No Commission</h3>
-            <p class="mt-2 text-sm text-slate-600">Artists keep 100% of what they sell. We provide the space, the foot traffic, and the coffee.</p>
+            <p class="mt-2 text-sm text-slate-600">
+              Artists keep 100% of what they sell. We provide the space, the
+              foot traffic, and the coffee.
+            </p>
           </div>
           <div class="rounded-2xl bg-white p-6 shadow-sm">
             <h3 class="font-semibold text-slate-800">Twice a Month</h3>
-            <p class="mt-2 text-sm text-slate-600">Our art space opens on the second and fourth weekend of every month. Follow us on Instagram for dates.</p>
+            <p class="mt-2 text-sm text-slate-600">
+              Our art space opens on the second and fourth weekend of every
+              month. Follow us on Instagram for dates.
+            </p>
           </div>
           <div class="rounded-2xl bg-white p-6 shadow-sm">
             <h3 class="font-semibold text-slate-800">Everyone Welcome</h3>
-            <p class="mt-2 text-sm text-slate-600">Entry is always free. Come support local creativity – and maybe take home something beautiful.</p>
+            <p class="mt-2 text-sm text-slate-600">
+              Entry is always free. Come support local creativity – and maybe
+              take home something beautiful.
+            </p>
           </div>
         </div>
 
