@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+
+/* Preline UI */
+@source '../../../node_modules/preline/dist/*.js';
+@import '../../../node_modules/preline/variants.css';
+
+/* Plugins */
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  /* https://tailwindcss.com/docs/colors#customizing-your-colors */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-off-white: oklch(0.997 0 0);
+
+  --color-slate-50: oklch(0.984 0.003 247.858);
+  --color-slate-100: oklch(0.968 0.007 247.896);
+  --color-slate-200: oklch(0.929 0.013 255.508);
+  --color-slate-300: oklch(0.869 0.022 252.894);
+  --color-slate-400: oklch(0.704 0.04 256.788);
+  --color-slate-500: oklch(0.554 0.046 257.417);
+  --color-slate-600: oklch(0.446 0.043 257.281);
+  --color-slate-700: oklch(0.372 0.044 257.287);
+  --color-slate-800: oklch(0.279 0.041 260.031);
+  --color-slate-900: oklch(0.208 0.042 265.755);
+  --color-slate-950: oklch(0.129 0.042 264.695);
+
+  /* MATES Cafe Colors */
+  /* Matcha Green - sampled from matcha.png (#7e9f0c) */
+  --color-matcha-50: oklch(97.5% 0.02 123.3);
+  --color-matcha-100: oklch(94% 0.045 123.3);
+  --color-matcha-200: oklch(88% 0.08 123.3);
+  --color-matcha-300: oklch(80% 0.12 123.3);
+  --color-matcha-400: oklch(72% 0.15 123.3);
+  --color-matcha-500: oklch(65.4% 0.158 123.3);
+  --color-matcha-600: oklch(57% 0.14 123.3);
+  --color-matcha-700: oklch(47% 0.12 123.3);
+  --color-matcha-800: oklch(38% 0.095 123.3);
+  --color-matcha-900: oklch(30% 0.075 123.3);
+  --color-matcha-950: oklch(20% 0.05 123.3);
+
+  /* MATES Blue - sampled from the logo (#406aff) */
+  --color-mates-blue-50: oklch(97% 0.02 267);
+  --color-mates-blue-100: oklch(93% 0.05 267);
+  --color-mates-blue-200: oklch(85% 0.10 267);
+  --color-mates-blue-300: oklch(75% 0.16 267);
+  --color-mates-blue-400: oklch(66% 0.20 267);
+  --color-mates-blue-500: oklch(58.5% 0.226 267);
+  --color-mates-blue-600: oklch(50% 0.20 267);
+  --color-mates-blue-700: oklch(42% 0.17 267);
+  --color-mates-blue-800: oklch(34% 0.135 267);
+  --color-mates-blue-900: oklch(27% 0.10 267);
+  --color-mates-blue-950: oklch(18% 0.065 267);
+
+  /* Teal is aliased to matcha so older components stay on-brand. */
+  --color-teal-50: var(--color-matcha-50);
+  --color-teal-100: var(--color-matcha-100);
+  --color-teal-200: var(--color-matcha-200);
+  --color-teal-300: var(--color-matcha-300);
+  --color-teal-400: var(--color-matcha-400);
+  --color-teal-500: var(--color-matcha-500);
+  --color-teal-600: var(--color-matcha-600);
+  --color-teal-700: var(--color-matcha-700);
+  --color-teal-800: var(--color-matcha-800);
+  --color-teal-900: var(--color-matcha-900);
+  --color-teal-950: var(--color-matcha-950);
+}
+
+@theme inline {
+  --animate-scroll: scroll var(--duration, 40s) var(--direction, forwards)
+    linear infinite;
+
+  /* https://tailwindcss.com/docs/font-family#customizing-your-theme */
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --font-work-sans: 'Work Sans', sans-serif;
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-slate-200, currentColor);
+  }
+
+  body {
+    @apply font-work-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .dm-sans {
+    @apply font-dm-sans;
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility card {
+  @apply relative z-10 flex h-full flex-col border-dashed border-slate-300 p-4 before:absolute before:inset-0 before:-z-1 before:bg-linear-to-b/oklch before:via-80% before:opacity-0 hover:before:from-transparent hover:before:via-transparent hover:before:to-teal-500/20 hover:before:opacity-100 focus:outline-hidden focus:before:from-transparent focus:before:via-transparent focus:before:to-teal-500/20 focus:before:opacity-100 md:p-6;
+}

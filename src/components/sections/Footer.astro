@@ -1,0 +1,105 @@
+---
+import { site } from '@/site';
+import { Image } from 'astro:assets';
+import InstagramIcon from '@ui/InstagramIcon.astro';
+import logoMates from '@images/mates-cafe-wordmark.png';
+
+// Company details live in src/site.ts
+const companyName = site.name;
+const companyDescription = site.description;
+
+// Dynamic date for copyright display
+const copyrightYear = new Date().getFullYear();
+
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Menu', href: '/menu' },
+  { label: 'Community', href: '/community' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<footer class="mt-auto w-full bg-linear-to-t/oklch from-matcha-100 via-transparent to-white pb-10">
+  <div class="mx-auto mt-auto w-full max-w-[85rem] px-4 pb-10 sm:px-6 lg:px-8">
+    <hr class="mb-10 border-slate-200" />
+
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+      {/* Brand */}
+      <div class="lg:col-span-2">
+        <a
+          href="/"
+          class="inline-flex focus:opacity-80 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-matcha-700/80 focus-visible:ring-offset-2"
+          aria-label={`${companyName} Homepage`}
+        >
+          <Image
+            src={logoMates}
+            alt="MATES Cafe"
+            width={240}
+            height={300}
+            class="h-24 w-auto object-contain"
+          />
+        </a>
+        <p class="mt-4 max-w-sm text-pretty text-slate-600">
+          {companyDescription}
+        </p>
+        <a
+          href={site.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-6 inline-flex items-center gap-2 rounded-full border border-matcha-700 px-4 py-2 text-sm font-semibold text-matcha-800 transition-colors hover:bg-matcha-700 hover:text-white focus:outline-hidden focus-visible:ring-2 focus-visible:ring-matcha-700/80 focus-visible:ring-offset-2"
+        >
+          <InstagramIcon class="size-4" />
+          @mates.cafe
+        </a>
+      </div>
+
+      {/* Quick Links */}
+      <div>
+        <h3 class="font-semibold text-slate-700">Quick Links</h3>
+        <nav class="mt-4 flex flex-col gap-2">
+          {quickLinks.map(link => (
+            <a
+              href={link.href}
+              class="text-sm text-slate-600 transition-colors hover:text-matcha-700"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      {/* Contact */}
+      <div>
+        <h3 class="font-semibold text-slate-700">Visit Us</h3>
+        <address class="mt-4 space-y-1 text-sm text-slate-600 not-italic">
+          <p>{site.address.street}</p>
+          <p>{site.address.city}, {site.address.country}</p>
+          <p class="pt-2">
+            <a href={`tel:${site.phone}`} class="transition-colors hover:text-matcha-700">
+              {site.phone}
+            </a>
+          </p>
+          <p>
+            <a href={`mailto:${site.email}`} class="transition-colors hover:text-matcha-700">
+              {site.email}
+            </a>
+          </p>
+        </address>
+      </div>
+    </div>
+
+    {/* Divider before footer's bottom section */}
+    <hr class="mt-10 mb-5 border-slate-200" />
+
+    <div class="grid gap-y-2 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
+      <p class="text-sm text-slate-400/70">
+        &copy; {copyrightYear} {companyName}. All rights reserved.
+      </p>
+
+      <p class="text-sm text-slate-400/70">
+        Made with <span class="text-matcha-600">♥</span> in Tanjong Malim
+      </p>
+    </div>
+  </div>
+</footer>

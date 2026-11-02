@@ -1,0 +1,208 @@
+---
+export const prerender = true;
+import BaseLayout from '@layout/BaseLayout.astro';
+import Icon from '@ui/icons/Icon.astro';
+import InstagramIcon from '@ui/InstagramIcon.astro';
+import JsonForm from '@ui/forms/JsonForm.astro';
+import { Image } from 'astro:assets';
+import { contactForm } from '@/forms/declarations';
+import { site } from '@/site';
+import table from '@images/table.jpeg';
+import type { WithContext, Thing } from 'schema-dts';
+
+const addressHeading = 'Visit us at';
+const emailHeading = 'Email us';
+const phoneHeading = 'Call us';
+const hoursHeading = 'Opening hours';
+
+const contactDetails = {
+  addressLine1: site.address.street,
+  addressLine2: `${site.address.city}, ${site.address.country}`,
+  email: site.email,
+  phone: site.phone,
+};
+
+const openingHours = [
+  { day: 'Monday – Friday', time: '8:00 AM – 10:00 PM' },
+  { day: 'Saturday', time: '9:00 AM – 11:00 PM' },
+  { day: 'Sunday', time: '9:00 AM – 9:00 PM' },
+];
+
+const googleMapsUrl =
+  'https://www.google.com/maps/search/?api=1&query=MATES+Cafe+Tanjong+Malim';
+const wazeUrl = 'https://waze.com/ul?q=MATES%20Cafe%20Tanjong%20Malim';
+
+const seo = {
+  title: 'Contact MATES Cafe',
+  description:
+    'Get in touch with MATES Cafe in Tanjong Malim. Visit us for great coffee, join our volunteer program, or inquire about our art space events.',
+};
+
+const schema: WithContext<Thing> = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  inLanguage: 'en-US',
+  '@id': Astro.url.href,
+  url: Astro.url.href,
+  name: 'Contact MATES Cafe',
+  description:
+    'Contact MATES Cafe in Tanjong Malim, Perak. Visit us, email us, or follow @mates.cafe on Instagram.',
+  isPartOf: {
+    '@type': 'WebSite',
+    url: `${Astro.site}`,
+    name: 'MATES',
+    description:
+      'MATES is a community-focused cafe in Tanjong Malim, Malaysia, where students learn barista skills through a volunteering program. We also host an art space twice a month for local artists and craftspeople.',
+  },
+};
+---
+
+<BaseLayout seo={seo} schema={schema}>
+  <div class="mx-auto max-w-[85rem] px-4 pt-48 pb-24 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.25em] text-matcha-600">
+        Tanjong Malim · Perak
+      </p>
+      <h1 class="mt-4 text-4xl font-light text-balance text-slate-800 sm:text-5xl md:text-6xl lg:text-7xl">
+        Visit Us
+      </h1>
+      <p class="mt-5 text-lg text-pretty text-slate-600">
+        Come by for a coffee, send us a message, or follow our journey on Instagram. There is always a seat at the long table.
+      </p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2">
+      {/* Contact details */}
+      <div class="space-y-8">
+        <div class="flex gap-4">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-matcha-100 text-matcha-700">
+            <Icon name="mapPin" class="size-5" />
+          </span>
+          <div>
+            <h2 class="font-semibold text-slate-800">{addressHeading}</h2>
+            <address class="mt-1 text-sm text-slate-500 not-italic">
+              {contactDetails.addressLine1}<br />
+              {contactDetails.addressLine2}
+            </address>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-matcha-100 text-matcha-700">
+            <Icon name="email" class="size-5" />
+          </span>
+          <div>
+            <h2 class="font-semibold text-slate-800">{emailHeading}</h2>
+            <a
+              class="mt-1 text-sm text-slate-500 transition-colors duration-300 hover:text-matcha-700 focus:text-matcha-700 focus:outline-hidden"
+              href={`mailto:${contactDetails.email}`}
+            >
+              {contactDetails.email}
+            </a>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-matcha-100 text-matcha-700">
+            <Icon name="mobile" class="size-5" />
+          </span>
+          <div>
+            <h2 class="font-semibold text-slate-800">{phoneHeading}</h2>
+            <a
+              class="mt-1 text-sm text-slate-500 transition-colors duration-300 hover:text-matcha-700 focus:text-matcha-700 focus:outline-hidden"
+              href={`tel:${contactDetails.phone}`}
+            >
+              {contactDetails.phone}
+            </a>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-matcha-100 text-matcha-700">
+            <Icon name="clock" class="size-5" />
+          </span>
+          <div class="grow">
+            <h2 class="font-semibold text-slate-800">{hoursHeading}</h2>
+            <dl class="mt-2 max-w-sm space-y-1.5 text-sm text-slate-500">
+              {openingHours.map(hour => (
+                <div class="flex justify-between gap-6">
+                  <dt>{hour.day}</dt>
+                  <dd class="font-medium text-slate-700">{hour.time}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-mates-blue-100 text-mates-blue-700">
+            <InstagramIcon class="size-5" />
+          </span>
+          <div>
+            <h2 class="font-semibold text-slate-800">Follow along</h2>
+            <a
+              href={site.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-1 inline-flex text-sm text-slate-500 transition-colors duration-300 hover:text-matcha-700 focus:text-matcha-700 focus:outline-hidden"
+            >
+              @mates.cafe
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact form */}
+      <div class="rounded-3xl bg-matcha-50 p-6 ring-1 ring-matcha-100 sm:p-8">
+        <h2 class="text-2xl font-semibold text-slate-800">Send us a message</h2>
+        <p class="mt-1 text-sm text-slate-600">
+          Questions, ideas, or just want to say hello? We usually reply within a day.
+        </p>
+        <div class="mt-6">
+          <JsonForm form={contactForm} />
+        </div>
+      </div>
+    </div>
+
+    {/* Find us band */}
+    <section class="relative isolate mt-16 overflow-hidden rounded-3xl">
+      <Image
+        src={table}
+        alt="The long communal table and artwork inside MATES Cafe"
+        width={1600}
+        height={1100}
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 -z-10 bg-slate-950/70"></div>
+      <div class="relative flex min-h-[24rem] flex-col items-center justify-center px-6 py-16 text-center">
+        <span class="flex size-14 items-center justify-center rounded-full bg-white/10 text-matcha-300 ring-1 ring-white/20">
+          <Icon name="mapPin" class="size-7" />
+        </span>
+        <h2 class="mt-5 text-3xl font-semibold text-white sm:text-4xl">
+          Find us in Tanjong Malim
+        </h2>
+        <p class="mt-2 max-w-md text-pretty text-white/80">
+          {contactDetails.addressLine1}, {contactDetails.addressLine2} — in the heart of town, a short walk from the main street.
+        </p>
+        <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-matcha-50 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+          >
+            Get directions
+          </a>
+          <a
+            href={wazeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+          >
+            Open in Waze
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

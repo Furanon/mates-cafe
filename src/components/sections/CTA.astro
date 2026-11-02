@@ -1,0 +1,37 @@
+---
+import Button from '@ui/Button.astro';
+---
+
+<section class="mx-auto max-w-[85rem] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+  <div class="relative isolate overflow-hidden rounded-3xl bg-matcha-600 px-6 py-16 sm:px-12 lg:px-20 lg:py-20">
+    {/* Decorative circles */}
+    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full bg-matcha-500/60" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -bottom-32 -left-20 -z-10 size-96 rounded-full bg-mates-blue-500/20" aria-hidden="true"></div>
+
+    <div class="max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.25em] text-matcha-100">
+        Tanjong Malim, Perak
+      </p>
+      <h2 class="mt-4 text-4xl font-light text-balance text-white sm:text-5xl">
+        Come for the coffee. Stay for the company.
+      </h2>
+      <p class="mt-5 text-lg text-pretty text-matcha-50">
+        Bring a friend, bring your laptop, or just bring yourself. There is always a seat at the long table — and the kettle is always on.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <Button
+          href="/contact"
+          className="border-none bg-white px-7! py-3! text-matcha-800 hover:bg-matcha-50 focus:bg-matcha-50"
+        >
+          Find us
+        </Button>
+        <Button
+          href="/community"
+          className="border-2 border-white/70 bg-transparent px-7! py-3! text-white hover:border-white hover:bg-white/10 focus:bg-white/10"
+        >
+          Join the community
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

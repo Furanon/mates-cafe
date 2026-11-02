@@ -1,0 +1,18 @@
+---
+export const prerender = true;
+import BaseLayout from '@layout/BaseLayout.astro';
+import Hero from '@sections/HeroSection.astro';
+import FeatureShowcase from '@sections/FeatureShowcase.astro';
+import FeatureGrid from '@sections/FeatureGrid.astro';
+import CTA from '@sections/CTA.astro';
+---
+
+<BaseLayout>
+  <Hero />
+
+  <FeatureShowcase />
+
+  <FeatureGrid />
+
+  <CTA />
+</BaseLayout>

@@ -1,0 +1,86 @@
+---
+import { Image } from 'astro:assets';
+import splash from '@images/splash.jpeg';
+import groupshot from '@images/groupshot.png';
+---
+
+{/* Splash hero: establishes the coffee vibe on first impression */}
+<section class="relative isolate overflow-hidden bg-slate-900">
+  <Image
+    src={splash}
+    alt="The MATES coffee bar in Tanjong Malim, with espresso grinder and paper lanterns"
+    width={960}
+    height={1280}
+    loading="eager"
+    fetchpriority="high"
+    class="absolute inset-0 h-full w-full object-cover object-center"
+  />
+  {/* Warm dark wash so the white type stays readable over the photo */}
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/55 to-slate-950/85"></div>
+
+  <div class="relative mx-auto flex min-h-[92svh] max-w-[85rem] flex-col justify-center px-4 pt-44 pb-52 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-medium uppercase tracking-[0.3em] text-matcha-300">
+        Tanjong Malim · Perak
+      </p>
+      <h1 class="mt-6 text-5xl font-light text-balance text-white sm:text-6xl md:text-7xl lg:text-8xl">
+        Coffee, community, and a seat for everyone.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-pretty text-white/85 sm:text-xl">
+        MATES is a neighbourhood cafe where students learn barista skills through our volunteer programme, local artists share their work twice a month, and every cup starts with a conversation.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href="/menu"
+          class="inline-flex items-center justify-center rounded-full bg-matcha-500 px-7 py-3.5 font-semibold text-matcha-950 shadow-lg transition-colors hover:bg-matcha-400 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+        >
+          See the menu
+        </a>
+        <a
+          href="/community"
+          class="inline-flex items-center justify-center rounded-full border border-white/40 px-7 py-3.5 font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+        >
+          Join the community
+        </a>
+      </div>
+
+      <dl class="mt-14 grid max-w-xl grid-cols-1 gap-6 border-t border-white/20 pt-8 sm:grid-cols-3">
+        <div>
+          <dt class="text-sm text-white/60">Volunteer baristas</dt>
+          <dd class="mt-1 text-lg font-medium text-white">Students welcome</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-white/60">Art space</dt>
+          <dd class="mt-1 text-lg font-medium text-white">Twice a month</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-white/60">Find us</dt>
+          <dd class="mt-1 text-lg font-medium text-white">@mates.cafe</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+{/* The group shot deserves a big, proud placement right below the splash */}
+<section class="relative z-10 mx-auto max-w-[72rem] px-4 sm:px-6 lg:px-8">
+  <figure class="-mt-36 overflow-hidden rounded-3xl shadow-2xl ring-1 ring-black/10 sm:-mt-40">
+    <Image
+      src={groupshot}
+      alt="The MATES crew and student volunteers smiling behind the cafe counter"
+      width={1600}
+      height={940}
+      loading="eager"
+      class="aspect-[16/9] w-full object-cover"
+    />
+    <figcaption class="flex flex-col gap-2 bg-white px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+      <p class="font-medium text-slate-800">The MATES crew — baristas, students, and friends.</p>
+      <a
+        href="/community"
+        class="text-sm font-semibold text-matcha-700 transition-colors hover:text-matcha-800"
+      >
+        Meet the community →
+      </a>
+    </figcaption>
+  </figure>
+</section>

@@ -1,0 +1,89 @@
+---
+import { Image } from 'astro:assets';
+import Icon from '@ui/icons/Icon.astro';
+import table from '@images/table.jpeg';
+
+const title =
+  'Built around <span class="text-matcha-700">people</span>, not just coffee';
+const subTitle =
+  'Every corner of MATES is designed to make room for someone — a student learning a new skill, an artist sharing their work, or a neighbour who just wants a good cup and a chat.';
+
+const features = [
+  {
+    borderClasses: 'md:border-l md:border-r',
+    gradientClasses: 'bg-linear-to-l/oklch from-matcha-200 to-transparent',
+    icon: 'users',
+    heading: 'Students',
+    description:
+      'Our volunteer programme trades time for training. Students learn espresso, milk work, and service — and leave with skills (and a certificate) they can take anywhere.',
+  },
+  {
+    borderClasses: 'border-b border-t md:border-b-0',
+    gridClasses: 'md:col-start-2 md:col-end-3',
+    gradientClasses: 'bg-linear-to-t/oklch from-mates-blue-200 to-transparent',
+    icon: 'palette',
+    heading: 'Artists',
+    description:
+      'Twice a month, the long table becomes a gallery. Local makers display and sell their work with no fees and no commission — just a room full of people who came for coffee and stayed for art.',
+  },
+  {
+    borderClasses: 'md:border-l md:border-r md:border-t',
+    gridClasses: 'md:col-end-4',
+    gradientClasses: 'bg-linear-to-tl/oklch from-matcha-200 to-transparent',
+    icon: 'heart',
+    heading: 'Neighbours',
+    description:
+      'The long table is for everyone: study sessions, first dates, quiet mornings, loud reunions. Come alone or bring the whole crew — there is always room for one more.',
+  },
+];
+---
+
+<section class="mx-auto max-w-[85rem] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+  <div class="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 md:grid-rows-2">
+    {/* Section heading */}
+    <div class="mx-auto max-w-lg pb-8 text-center md:col-span-2 lg:mx-0 lg:flex-auto lg:text-left">
+      <h2 class="text-3xl font-semibold tracking-tight text-balance text-slate-800 md:text-4xl md:leading-tight">
+        <Fragment set:html={title} />
+      </h2>
+      <p class="mt-6 text-start text-lg/8 text-pretty text-slate-600 sm:text-center md:text-start">
+        {subTitle}
+      </p>
+    </div>
+
+    {/* Communal table photo fills the fourth grid cell */}
+    <div class="relative hidden overflow-hidden rounded-2xl md:col-start-1 md:col-end-2 md:row-start-2 md:block md:mx-6 md:my-8">
+      <Image
+        src={table}
+        alt="The long communal table at MATES, beneath artwork by local makers"
+        width={900}
+        height={1200}
+        class="h-full w-full object-cover"
+      />
+      <p class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-sm font-medium text-white">
+        The long table is everyone's table.
+      </p>
+    </div>
+
+    {/* Feature cards */}
+    {features.map(feature => (
+      <div
+        class={`group relative mx-auto flex flex-col border-dashed border-slate-400 py-10 ${feature.borderClasses} ${feature.gridClasses}`}
+      >
+        <div
+          class={`pointer-events-none absolute inset-0 h-full w-full ${feature.gradientClasses} opacity-0 transition duration-300 group-hover:opacity-100`}
+        />
+        <div class="relative z-10 mb-4 px-10">
+          <Icon name={feature.icon} class="text-slate-500" />
+        </div>
+        <div class="relative z-10 mb-2 px-10 text-lg font-semibold">
+          <span class="inline-block text-balance text-slate-800 transition duration-300 group-hover:translate-x-2">
+            {feature.heading}
+          </span>
+        </div>
+        <p class="z-10 max-w-sm px-10 text-sm text-pretty text-slate-600 sm:max-w-lg md:mx-0">
+          {feature.description}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>

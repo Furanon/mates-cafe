@@ -1,0 +1,177 @@
+---
+export const prerender = true;
+import BaseLayout from '@layout/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import matchaLatte from '@images/matcha_latte.png';
+import splash from '@images/splash.jpeg';
+import whitePasta from '@images/white_pasta.png';
+import chicken from '@images/chicken.png';
+import food from '@images/food.png';
+import type { WithContext, Thing } from 'schema-dts';
+
+const seo = {
+  title: 'Menu - MATES Cafe',
+  description:
+    'Explore the MATES Cafe menu - signature matcha drinks, specialty coffee, fresh food and pastries in Tanjong Malim, Perak.',
+};
+
+const schema: WithContext<Thing> = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  inLanguage: 'en-US',
+  '@id': Astro.url.href,
+  url: Astro.url.href,
+  name: 'MATES Cafe Menu',
+  description:
+    'Signature matcha drinks, specialty coffee, fresh food and pastries at MATES Cafe in Tanjong Malim.',
+  isPartOf: {
+    '@type': 'WebSite',
+    url: `${Astro.site}`,
+    name: 'MATES',
+  },
+};
+
+const menuSections = [
+  {
+    id: 'matcha',
+    title: 'Matcha Specialties',
+    subtitle: 'Made with premium Japanese matcha',
+    image: matchaLatte,
+    imageAlt: 'A MATES matcha latte being finished with a dusting of matcha',
+    items: [
+      { name: 'Classic Matcha Latte', description: 'Ceremonial-grade matcha with steamed milk', price: 'RM 14' },
+      { name: 'Iced Matcha Latte', description: 'Our classic matcha, served over ice', price: 'RM 14' },
+      { name: 'Matcha Espresso Fusion', description: 'A bold shot of espresso meets earthy matcha', price: 'RM 16' },
+      { name: 'Strawberry Matcha', description: 'Sweet strawberry puree layered with matcha and milk', price: 'RM 17' },
+      { name: 'Matcha Affogato', description: 'Vanilla ice cream drowned in a shot of hot matcha', price: 'RM 16' },
+    ],
+  },
+  {
+    id: 'coffee',
+    title: 'Coffee & Espresso',
+    subtitle: 'Pulled by our student baristas',
+    image: splash,
+    imageAlt: 'The MATES coffee bar and espresso grinder',
+    items: [
+      { name: 'Espresso', description: 'Double shot of our house blend', price: 'RM 9' },
+      { name: 'Americano', description: 'Espresso with hot or cold water', price: 'RM 11' },
+      { name: 'Cappuccino', description: 'Espresso, steamed milk, and a thick layer of foam', price: 'RM 13' },
+      { name: 'Flat White', description: 'Smooth espresso with velvety microfoam', price: 'RM 13' },
+      { name: 'Cafe Latte', description: 'Espresso with plenty of steamed milk', price: 'RM 13' },
+      { name: 'Mocha', description: 'Espresso, chocolate, and steamed milk', price: 'RM 15' },
+      { name: 'Cold Brew', description: 'Slow-steeped for 18 hours, smooth and refreshing', price: 'RM 14' },
+    ],
+  },
+  {
+    id: 'food',
+    title: 'Food & Pastries',
+    subtitle: 'Fresh from the MATES kitchen',
+    image: whitePasta,
+    imageAlt: 'A plate of creamy pasta at MATES Cafe',
+    items: [
+      { name: 'Butter Croissant', description: 'Flaky, golden, baked fresh daily', price: 'RM 8' },
+      { name: 'Pain au Chocolat', description: 'Buttery pastry filled with dark chocolate', price: 'RM 9' },
+      { name: 'Banana Bread', description: 'Moist and warmly spiced, served toasted', price: 'RM 8' },
+      { name: 'Creamy Bacon Pasta', description: 'Silky white sauce, crispy bacon, and fresh basil', price: 'RM 18' },
+      { name: 'Chicken Rice Set', description: 'Grilled chicken, greens, soup, and a side of sambal', price: 'RM 20' },
+      { name: 'Laksa of the Day', description: 'Ask our team about today’s bowl', price: 'RM 16' },
+    ],
+  },
+];
+---
+
+<BaseLayout seo={seo} schema={schema}>
+  {/* Hero */}
+  <section class="mx-auto max-w-[85rem] px-4 pt-48 pb-12 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="text-4xl font-light text-balance text-slate-800 sm:text-5xl md:text-6xl lg:text-7xl">
+        Our Menu
+      </h1>
+      <p class="mt-6 text-lg text-pretty text-slate-600">
+        From signature matcha drinks to expertly pulled espresso and fresh local food – every item is prepared with care by our team of student baristas.
+      </p>
+      <nav class="mt-8 flex flex-wrap justify-center gap-2" aria-label="Menu sections">
+        {menuSections.map(section => (
+          <a
+            href={`#${section.id}`}
+            class="rounded-full border border-slate-300 px-5 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-matcha-600 hover:bg-matcha-50 hover:text-matcha-800"
+          >
+            {section.title}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  {/* Menu Sections */}
+  {menuSections.map((section, index) => (
+    <section
+      id={section.id}
+      class={index % 2 === 1 ? 'bg-matcha-50/40' : ''}
+    >
+      <div class="mx-auto max-w-[85rem] px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-5xl">
+          <div class={`grid gap-12 lg:grid-cols-2 items-center ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
+            <div class={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+              <p class="text-sm font-semibold uppercase tracking-widest text-matcha-600">{section.subtitle}</p>
+              <h2 class="mt-2 text-3xl font-semibold text-slate-800 md:text-4xl">{section.title}</h2>
+              <dl class="mt-8 divide-y divide-dashed divide-slate-200">
+                {section.items.map(item => (
+                  <div class="flex items-baseline justify-between gap-4 py-4">
+                    <div>
+                      <dt class="font-medium text-slate-800">{item.name}</dt>
+                      <dd class="mt-0.5 text-sm text-slate-500">{item.description}</dd>
+                    </div>
+                    <span class="shrink-0 font-semibold text-matcha-700">{item.price}</span>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div class={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
+              <Image
+                src={section.image}
+                alt={section.imageAlt}
+                width={800}
+                height={600}
+                class="rounded-2xl shadow-xl w-full h-auto object-cover max-h-[28rem]"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  {/* From the kitchen strip */}
+  <section class="mx-auto max-w-[85rem] px-4 pt-4 pb-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="text-center text-2xl font-semibold text-slate-800">From the kitchen</h2>
+      <p class="mt-2 text-center text-slate-600">A rotating line-up of local favourites, made fresh every day.</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-900/5">
+          <Image src={chicken} alt="Chicken rice set with soup and sambal at MATES Cafe" width={800} height={600} class="aspect-[4/3] w-full object-cover" />
+          <figcaption class="px-5 py-4">
+            <p class="font-medium text-slate-800">Chicken Rice Set</p>
+            <p class="text-sm text-slate-600">Grilled chicken, greens, clear soup, and sambal.</p>
+          </figcaption>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-900/5">
+          <Image src={food} alt="Laksa bowl with sambal at MATES Cafe" width={800} height={600} class="aspect-[4/3] w-full object-cover" />
+          <figcaption class="px-5 py-4">
+            <p class="font-medium text-slate-800">Laksa of the Day</p>
+            <p class="text-sm text-slate-600">Ask the team what’s simmering in the kitchen.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  {/* Note */}
+  <section class="mx-auto max-w-[85rem] px-4 pb-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl rounded-2xl bg-mates-blue-50 p-8 text-center">
+      <p class="text-slate-600">
+        Prices are in Malaysian Ringgit (RM) and subject to change. Ask our team about daily specials, seasonal drinks, and vegan options.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
