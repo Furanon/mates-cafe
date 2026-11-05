@@ -6,6 +6,7 @@ import { SEO, type Props as SEOProps } from 'astro-seo';
 import { Schema } from 'astro-seo-schema';
 import type { WithContext, Thing } from 'schema-dts';
 import { AstroFont } from 'astro-font';
+import { absoluteUrl, withBase } from '@utils/url';
 import '@styles/global.css';
 
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
 
 // Extract `seo` and `schema` from properties or define defaults
 const { seo, schema } = Astro.props;
-const socialImage = `${Astro.site}social.png`; // Path to the default social sharing image
+const socialImage = absoluteUrl('/social.png'); // Path to the default social sharing image
 
 const ogTitle = seo?.title ?? 'MATES Cafe - Community, Coffee & Creativity';
 const ogDescription =
@@ -34,7 +35,7 @@ const defaultSchema: WithContext<Thing> = {
     'MATES Cafe in Tanjong Malim, Perak - Community-focused cafe with student volunteer barista program and bi-monthly art space.',
   isPartOf: {
     '@type': 'WebSite',
-    url: `${Astro.site}`,
+    url: absoluteUrl('/'),
     name: 'MATES',
     description:
       'MATES is a community-focused cafe in Tanjong Malim, Malaysia, where students learn barista skills through a volunteering program. We also host an art space twice a month for local artists and craftspeople.',
@@ -71,9 +72,16 @@ const defaultSchema: WithContext<Thing> = {
       }}
       extend={{
         link: [
-          { rel: 'icon', href: '/icon.svg', type: 'image/svg+xml' },
-          { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-          { rel: 'manifest', href: '/manifest.webmanifest' },
+          {
+            rel: 'icon',
+            href: withBase('/icon.svg'),
+            type: 'image/svg+xml',
+          },
+          {
+            rel: 'apple-touch-icon',
+            href: withBase('/apple-touch-icon.png'),
+          },
+          { rel: 'manifest', href: withBase('/manifest.webmanifest') },
         ],
         meta: [
           { name: 'viewport', content: 'width=device-width' },

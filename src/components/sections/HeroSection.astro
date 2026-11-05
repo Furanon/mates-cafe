@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { withBase } from '@utils/url';
 import splash from '@images/splash.jpeg';
 import groupshot from '@images/groupshot.png';
 ---
@@ -22,7 +23,7 @@ import groupshot from '@images/groupshot.png';
   {/* Warm dark wash so the white type stays readable over the photo */}
   <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/55 to-slate-950/85"></div>
 
-  <div class="relative mx-auto flex min-h-[92svh] max-w-[85rem] flex-col px-4 pt-44 sm:px-6 lg:px-8">
+  <div class="relative mx-auto flex min-h-svh max-w-[85rem] flex-col px-4 pt-44 sm:px-6 lg:px-8">
     <div class="flex w-full max-w-3xl flex-1 flex-col">
       <p class="text-sm font-medium uppercase tracking-[0.3em] text-matcha-300">
         Tanjong Malim · Perak
@@ -36,23 +37,23 @@ import groupshot from '@images/groupshot.png';
         month, and every cup starts with a conversation.
       </p>
 
-      <div class="mt-auto pt-10">
+      <div class="mt-auto pt-10 pb-8">
         <div class="flex flex-wrap items-center gap-4">
           <a
-            href="/menu"
+            href={withBase('/menu')}
             class="inline-flex items-center justify-center rounded-full bg-matcha-500 px-7 py-3.5 font-semibold text-matcha-950 shadow-lg transition-colors hover:bg-matcha-400 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
           >
             See the menu
           </a>
           <a
-            href="/community"
+            href={withBase('/community')}
             class="inline-flex items-center justify-center rounded-full border border-white/40 px-7 py-3.5 font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
           >
             Join the community
           </a>
         </div>
 
-        <dl class="mt-14 grid max-w-xl grid-cols-1 gap-6 border-t border-white/20 pt-8 sm:grid-cols-3">
+        <dl class="mt-8 grid max-w-xl grid-cols-1 gap-6 border-t border-white/20 pt-5 sm:grid-cols-3">
           <div>
             <dt class="text-sm text-white/60">Volunteer baristas</dt>
             <dd class="mt-1 text-lg font-medium text-white">
@@ -65,7 +66,9 @@ import groupshot from '@images/groupshot.png';
           </div>
           <div>
             <dt class="text-sm text-white/60">Find us</dt>
-            <dd class="mt-1 text-lg font-medium text-white">@mates.cafe</dd>
+            <dd class="mt-1 text-lg font-medium text-white">
+              @mates.officials
+            </dd>
           </div>
         </dl>
       </div>
@@ -92,7 +95,7 @@ import groupshot from '@images/groupshot.png';
         The MATES crew — baristas, students, and friends.
       </p>
       <a
-        href="/community"
+        href={withBase('/community')}
         class="text-sm font-semibold text-matcha-700 transition-colors hover:text-matcha-800"
       >
         Meet the community →

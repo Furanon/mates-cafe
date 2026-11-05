@@ -5,11 +5,13 @@ import Icon from '@ui/icons/Icon.astro';
 import Button from '@ui/Button.astro';
 import type { WithContext, Thing } from 'schema-dts';
 import { menuItems, menus } from '@/navigation';
+import { absoluteUrl, withBase } from '@utils/url';
 
 export const pageContent = {
   errorCode: '404',
   title: 'This page does not exist',
-  description: "Sorry, we couldn't find the page you're looking for. Maybe it's taking a coffee break?",
+  description:
+    "Sorry, we couldn't find the page you're looking for. Maybe it's taking a coffee break?",
   goBackLabel: 'Back to Home',
 };
 
@@ -33,7 +35,7 @@ const schema: WithContext<Thing> = {
     "Sorry, we couldn't find the page you're looking for. Explore our story or go back to the homepage.",
   isPartOf: {
     '@type': 'WebSite',
-    url: `${Astro.site}`,
+    url: absoluteUrl('/'),
     name: 'MATES',
     description:
       'MATES is a community-focused cafe in Tanjong Malim, Malaysia, where students learn barista skills through a volunteering program. We also host an art space twice a month for local artists and craftspeople.',
@@ -44,7 +46,9 @@ const schema: WithContext<Thing> = {
 <BaseLayout seo={seo} schema={schema}>
   <section class="grid min-h-full place-items-center px-6 pt-32 pb-10 sm:pt-48 lg:px-8">
     <div class="text-center">
-      <p class="text-xl font-semibold text-matcha-600">{pageContent.errorCode}</p>
+      <p class="text-xl font-semibold text-matcha-600">
+        {pageContent.errorCode}
+      </p>
       <h1 class="mt-4 text-4xl text-balance text-slate-800 sm:text-5xl md:text-6xl lg:text-7xl">
         {pageContent.title}
       </h1>
@@ -59,7 +63,7 @@ const schema: WithContext<Thing> = {
           {resources.map(resource => (
             <li>
               <a
-                href={resource.href}
+                href={withBase(resource.href)}
                 class="group flex gap-x-5 px-2 py-8 transition hover:bg-slate-100"
               >
                 <Icon name={resource.icon} class="size-6 text-matcha-600" />
@@ -96,7 +100,7 @@ const schema: WithContext<Thing> = {
         if (window.history.length > 1) {
           history.back();
         } else {
-          window.location.href = '/';
+          window.location.href = import.meta.env.BASE_URL;
         }
       });
     });

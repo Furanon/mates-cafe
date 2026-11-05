@@ -4,7 +4,7 @@ import splash from '@images/splash.jpeg';
 import groupshot from '@images/groupshot.png';
 import matchaLatte from '@images/matcha_latte.png';
 import community1 from '@images/community1.jpeg';
-import table1 from '@images/table.jpeg';
+import whitePasta from '@images/white_pasta.png';
 import table2 from '@images/table2.jpeg';
 
 /**
@@ -80,13 +80,15 @@ export const menus = {
           {
             icon: 'users',
             title: 'Volunteer Program',
-            description: 'Students learn barista skills in exchange for their time',
+            description:
+              'Students learn barista skills in exchange for their time',
             href: '/about#volunteer',
           },
           {
             icon: 'palette',
             title: 'Art Space',
-            description: 'Open twice a month for local artists and craftspeople',
+            description:
+              'Open twice a month for local artists and craftspeople',
             href: '/about#art-space',
           },
         ],
@@ -103,22 +105,22 @@ export const menus = {
       {
         items: [
           {
-            href: '/menu#matcha',
-            title: 'Matcha Specialties',
-            description: 'Our signature matcha drinks made with premium powder',
-            image: matchaLatte,
-          },
-          {
             href: '/menu#coffee',
-            title: 'Coffee & Espresso',
-            description: 'Expertly crafted by our student baristas',
+            title: 'Coffee',
+            description: 'Espresso, local favourites and house specials',
             image: splash,
           },
           {
-            href: '/menu#food',
-            title: 'Food & Pastries',
-            description: 'Fresh, locally-sourced bites to pair with your drink',
-            image: table1,
+            href: '/menu#non-coffee',
+            title: 'Non Coffee',
+            description: 'Matcha, chocolate and teh tarik',
+            image: matchaLatte,
+          },
+          {
+            href: '/menu#light-bites',
+            title: 'From the Kitchen',
+            description: 'Light bites, hearty mains and daily treats',
+            image: whitePasta,
           },
         ],
       },
@@ -136,7 +138,8 @@ export const menus = {
           {
             href: '/community#volunteer',
             title: 'Student Volunteers',
-            description: 'Learn barista skills while giving back to the community',
+            description:
+              'Learn barista skills while giving back to the community',
             image: groupshot,
           },
           {

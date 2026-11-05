@@ -11,15 +11,15 @@ export const site = {
   tagline:
     'MATES Cafe - Community, Coffee & Creativity in Tanjong Malim. Learn barista skills through our student volunteer program. Art space open twice monthly.',
   address: {
-    street: 'Tanjong Malim',
-    city: 'Perak',
+    street: 'NO 53 BAWAH, Jalan Besar, PEKAN',
+    city: '35900 Tanjong Malim, Perak',
     country: 'Malaysia',
   },
   phone: '+60 12-345 6789',
   email: 'hello@mates.cafe',
   salesEmail: 'events@mates.cafe',
   website: 'mates.cafe',
-  instagram: 'https://instagram.com/mates.cafe',
+  instagram: 'https://www.instagram.com/mates.officials/?hl=en',
 } as const;
 
 /** `tel:` href for a display phone number. */

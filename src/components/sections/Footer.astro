@@ -2,6 +2,7 @@
 import { site } from '@/site';
 import { Image } from 'astro:assets';
 import InstagramIcon from '@ui/InstagramIcon.astro';
+import { withBase } from '@utils/url';
 import logoMates from '@images/mates-cafe-wordmark.png';
 
 // Company details live in src/site.ts
@@ -28,7 +29,7 @@ const quickLinks = [
       {/* Brand */}
       <div class="lg:col-span-2">
         <a
-          href="/"
+          href={withBase('/')}
           class="inline-flex focus:opacity-80 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-matcha-700/80 focus-visible:ring-offset-2"
           aria-label={`${companyName} Homepage`}
         >
@@ -50,7 +51,7 @@ const quickLinks = [
           class="mt-6 inline-flex items-center gap-2 rounded-full border border-matcha-700 px-4 py-2 text-sm font-semibold text-matcha-800 transition-colors hover:bg-matcha-700 hover:text-white focus:outline-hidden focus-visible:ring-2 focus-visible:ring-matcha-700/80 focus-visible:ring-offset-2"
         >
           <InstagramIcon class="size-4" />
-          @mates.cafe
+          @mates.officials
         </a>
       </div>
 
@@ -60,7 +61,7 @@ const quickLinks = [
         <nav class="mt-4 flex flex-col gap-2">
           {quickLinks.map(link => (
             <a
-              href={link.href}
+              href={withBase(link.href)}
               class="text-sm text-slate-600 transition-colors hover:text-matcha-700"
             >
               {link.label}
@@ -74,14 +75,22 @@ const quickLinks = [
         <h3 class="font-semibold text-slate-700">Visit Us</h3>
         <address class="mt-4 space-y-1 text-sm text-slate-600 not-italic">
           <p>{site.address.street}</p>
-          <p>{site.address.city}, {site.address.country}</p>
+          <p>
+            {site.address.city}, {site.address.country}
+          </p>
           <p class="pt-2">
-            <a href={`tel:${site.phone}`} class="transition-colors hover:text-matcha-700">
+            <a
+              href={`tel:${site.phone}`}
+              class="transition-colors hover:text-matcha-700"
+            >
               {site.phone}
             </a>
           </p>
           <p>
-            <a href={`mailto:${site.email}`} class="transition-colors hover:text-matcha-700">
+            <a
+              href={`mailto:${site.email}`}
+              class="transition-colors hover:text-matcha-700"
+            >
               {site.email}
             </a>
           </p>

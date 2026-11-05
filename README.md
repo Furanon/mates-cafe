@@ -6,13 +6,13 @@ The site is designed around three things: great coffee, a student volunteer prog
 
 ## Pages
 
-| Route        | What it is                                                              |
-| ------------ | ----------------------------------------------------------------------- |
-| `/`          | Splash hero, signature matcha, volunteer programme and art space        |
-| `/menu`      | Matcha, coffee and food menus with prices                               |
-| `/community` | The volunteer programme and the bi-monthly art space                    |
-| `/about`     | The MATES story, mission, programmes and values                         |
-| `/contact`   | Address, opening hours, contact form and directions                     |
+| Route        | What it is                                                       |
+| ------------ | ---------------------------------------------------------------- |
+| `/`          | Splash hero, signature matcha, volunteer programme and art space |
+| `/menu`      | Matcha, coffee and food menus with prices                        |
+| `/community` | The volunteer programme and the bi-monthly art space             |
+| `/about`     | The MATES story, mission, programmes and values                  |
+| `/contact`   | Address, opening hours, contact form and directions              |
 
 ## Getting started
 
@@ -24,7 +24,8 @@ pnpm dev
 The dev server prints the local URL. Other useful commands:
 
 ```bash
-pnpm build        # astro check + production build
+pnpm build        # astro check + server (Vercel) build
+pnpm build:pages  # static GitHub Pages build
 pnpm test         # vitest
 pnpm format:fix   # prettier
 ```
@@ -55,4 +56,15 @@ The contact form posts JSON to `/api/contact`. Without a delivery target configu
 
 ## Deployment
 
-The project uses the Vercel adapter. Push the repository to Vercel (or run `pnpm build`) and set any environment variables you need from `.env.template`. Keystatic admin routes can be disabled in production with `SKIP_KEYSTATIC=1`.
+The public site is deployed to GitHub Pages at
+<https://furanon.github.io/mates-cafe/> by the
+`.github/workflows/deploy-pages.yml` workflow. Every push to `main` builds a
+static copy with `pnpm build:pages` and publishes it.
+
+GitHub Pages cannot run server endpoints, so the static build hides the contact
+form and shows email and Instagram links instead. The API routes remain in the
+repository for the optional Vercel deployment.
+
+To deploy the server version instead, push the repository to Vercel (or run
+`pnpm build`) and set any environment variables you need from `.env.template`.
+Keystatic admin routes can be disabled in production with `SKIP_KEYSTATIC=1`.

@@ -7,11 +7,14 @@ import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
 import svelte from '@astrojs/svelte';
 
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+
 // https://astro.build/config
 export default defineConfig({
-  // The `site` property specifies the base URL for your site.
-  // Be sure to update this to your own domain (e.g., "https://yourdomain.com") before deploying.
-  site: 'https://mates.cafe',
+  // The production site lives on GitHub Pages. The Vercel URL remains the
+  // fallback when building for the existing server deployment.
+  site: isGitHubPages ? 'https://furanon.github.io' : 'https://mates.cafe',
+  base: isGitHubPages ? '/mates-cafe/' : undefined,
   prefetch: true,
   trailingSlash: 'never',
   experimental: {
@@ -26,6 +29,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  output: 'server',
-  adapter: vercel(),
+  output: isGitHubPages ? 'static' : 'server',
+  adapter: isGitHubPages ? undefined : vercel(),
 });

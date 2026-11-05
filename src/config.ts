@@ -24,6 +24,9 @@ const ENV_KEYS = [
   'PUBLIC_KEYSTATIC_STORAGE_MODE',
   'PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER',
   'PUBLIC_KEYSTATIC_GITHUB_REPO_NAME',
+  // Set when building the static GitHub Pages variant so pages can hide
+  // features that need the server.
+  'PUBLIC_DEPLOY_TARGET',
 ] as const;
 
 /** Every environment variable the app reads; `env.d.ts` types `import.meta.env` from this. */

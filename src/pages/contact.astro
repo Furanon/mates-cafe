@@ -7,8 +7,11 @@ import JsonForm from '@ui/forms/JsonForm.astro';
 import { Image } from 'astro:assets';
 import { contactForm } from '@/forms/declarations';
 import { site } from '@/site';
+import { absoluteUrl } from '@utils/url';
 import table from '@images/table.jpeg';
 import type { WithContext, Thing } from 'schema-dts';
+
+const isStaticPages = import.meta.env.PUBLIC_DEPLOY_TARGET === 'github-pages';
 
 const addressHeading = 'Visit us at';
 const emailHeading = 'Email us';
@@ -23,14 +26,14 @@ const contactDetails = {
 };
 
 const openingHours = [
-  { day: 'Monday – Friday', time: '8:00 AM – 10:00 PM' },
-  { day: 'Saturday', time: '9:00 AM – 11:00 PM' },
-  { day: 'Sunday', time: '9:00 AM – 9:00 PM' },
+  { day: 'Tuesday – Friday', time: '11:00 AM – 11:00 PM' },
+  { day: 'Saturday – Sunday', time: '8:00 AM – 11:00 PM' },
 ];
 
 const googleMapsUrl =
-  'https://www.google.com/maps/search/?api=1&query=MATES+Cafe+Tanjong+Malim';
-const wazeUrl = 'https://waze.com/ul?q=MATES%20Cafe%20Tanjong%20Malim';
+  'https://www.google.com/maps/search/?api=1&query=MATES+Cafe+NO+53+BAWAH+Jalan+Besar+Pekan+35900+Tanjong+Malim+Perak';
+const wazeUrl =
+  'https://waze.com/ul?q=MATES%20Cafe%20NO%2053%20BAWAH%20Jalan%20Besar%20Pekan%2035900%20Tanjong%20Malim%20Perak';
 
 const seo = {
   title: 'Contact MATES Cafe',
@@ -46,10 +49,10 @@ const schema: WithContext<Thing> = {
   url: Astro.url.href,
   name: 'Contact MATES Cafe',
   description:
-    'Contact MATES Cafe in Tanjong Malim, Perak. Visit us, email us, or follow @mates.cafe on Instagram.',
+    'Contact MATES Cafe in Tanjong Malim, Perak. Visit us, email us, or follow @mates.officials on Instagram.',
   isPartOf: {
     '@type': 'WebSite',
-    url: `${Astro.site}`,
+    url: absoluteUrl('/'),
     name: 'MATES',
     description:
       'MATES is a community-focused cafe in Tanjong Malim, Malaysia, where students learn barista skills through a volunteering program. We also host an art space twice a month for local artists and craftspeople.',
@@ -67,7 +70,8 @@ const schema: WithContext<Thing> = {
         Visit Us
       </h1>
       <p class="mt-5 text-lg text-pretty text-slate-600">
-        Come by for a coffee, send us a message, or follow our journey on Instagram. There is always a seat at the long table.
+        Come by for a coffee, send us a message, or follow our journey on
+        Instagram. There is always a seat at the long table.
       </p>
     </div>
 
@@ -81,7 +85,8 @@ const schema: WithContext<Thing> = {
           <div>
             <h2 class="font-semibold text-slate-800">{addressHeading}</h2>
             <address class="mt-1 text-sm text-slate-500 not-italic">
-              {contactDetails.addressLine1}<br />
+              {contactDetails.addressLine1}
+              <br />
               {contactDetails.addressLine2}
             </address>
           </div>
@@ -125,7 +130,7 @@ const schema: WithContext<Thing> = {
             <h2 class="font-semibold text-slate-800">{hoursHeading}</h2>
             <dl class="mt-2 max-w-sm space-y-1.5 text-sm text-slate-500">
               {openingHours.map(hour => (
-                <div class="flex justify-between gap-6">
+                <div class="flex justify-between gap-1 sm:gap-4">
                   <dt>{hour.day}</dt>
                   <dd class="font-medium text-slate-700">{hour.time}</dd>
                 </div>
@@ -146,7 +151,7 @@ const schema: WithContext<Thing> = {
               rel="noopener noreferrer"
               class="mt-1 inline-flex text-sm text-slate-500 transition-colors duration-300 hover:text-matcha-700 focus:text-matcha-700 focus:outline-hidden"
             >
-              @mates.cafe
+              @mates.officials
             </a>
           </div>
         </div>
@@ -155,12 +160,40 @@ const schema: WithContext<Thing> = {
       {/* Contact form */}
       <div class="rounded-3xl bg-matcha-50 p-6 ring-1 ring-matcha-100 sm:p-8">
         <h2 class="text-2xl font-semibold text-slate-800">Send us a message</h2>
-        <p class="mt-1 text-sm text-slate-600">
-          Questions, ideas, or just want to say hello? We usually reply within a day.
-        </p>
-        <div class="mt-6">
-          <JsonForm form={contactForm} />
-        </div>
+        {isStaticPages ? (
+          <>
+            <p class="mt-1 text-sm text-slate-600">
+              Questions, ideas, or just want to say hello? Email us or send a
+              message on Instagram — we usually reply within a day.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a
+                href={`mailto:${contactDetails.email}`}
+                class="inline-flex items-center justify-center rounded-lg bg-matcha-700 px-6 py-3 font-medium text-white transition-colors hover:bg-matcha-800 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-matcha-700/80 focus-visible:ring-offset-2"
+              >
+                Email {contactDetails.email}
+              </a>
+              <a
+                href={site.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center rounded-lg border-2 border-matcha-700 px-6 py-3 font-medium text-matcha-800 transition-colors hover:bg-matcha-700 hover:text-white focus:outline-hidden focus-visible:ring-2 focus-visible:ring-matcha-700/80 focus-visible:ring-offset-2"
+              >
+                Message on Instagram
+              </a>
+            </div>
+          </>
+        ) : (
+          <>
+            <p class="mt-1 text-sm text-slate-600">
+              Questions, ideas, or just want to say hello? We usually reply
+              within a day.
+            </p>
+            <div class="mt-6">
+              <JsonForm form={contactForm} />
+            </div>
+          </>
+        )}
       </div>
     </div>
 
@@ -182,7 +215,8 @@ const schema: WithContext<Thing> = {
           Find us in Tanjong Malim
         </h2>
         <p class="mt-2 max-w-md text-pretty text-white/80">
-          {contactDetails.addressLine1}, {contactDetails.addressLine2} — in the heart of town, a short walk from the main street.
+          {contactDetails.addressLine1}, {contactDetails.addressLine2} — in the
+          heart of town, a short walk from the main street.
         </p>
         <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
           <a

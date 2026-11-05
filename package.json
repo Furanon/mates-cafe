@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "build:pages": "node scripts/build-pages.mjs",
     "db:push": "drizzle-kit push",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
